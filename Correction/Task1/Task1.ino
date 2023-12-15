@@ -32,10 +32,21 @@ void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
   pinMode(ledPin, OUTPUT);
+
+  Serial.println("Bienvenido, ingresa la palabra que quieres enviar");
 }
 
 void loop() {
   // put your main code here, to run repeatedly
+
+  if (Serial.available()) {
+    delay(500);
+    MessageToSend = Serial.readStringUntil('\n'); 
+    MessageToSendMorse = PlainToMorse(MessageToSend);
+    Serial.println(MessageToSend);
+    MessageToSend = "";
+  }
+
   unsigned long currentTime = millis();
 
   // The LED flashes at the appropriate moment
@@ -46,6 +57,7 @@ void loop() {
     lastTime_Led = currentTime;
   }
 
+  /*
   // See if you have a message to send
   if (currentTime - lastTime_Process > Periode_Process) {
     // see if you've finished transmitting the previous message
@@ -56,6 +68,7 @@ void loop() {
       MessageToSend = "";
     }
   }
+  */
 
 }  // end Loop
 
@@ -240,6 +253,6 @@ String PlainToMorse(String plainText) {
 
   }  // end for
   // we add the ,Morse code corresponding to the end of the instruction
-  morseCode += "/.;.;.;-;.;-/";
+  // morseCode += "/.;.;.;-;.;-/";
   return morseCode;
 }
