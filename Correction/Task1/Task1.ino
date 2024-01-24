@@ -253,6 +253,6 @@ String PlainToMorse(String plainText) {
 
   }  // end for
   // we add the ,Morse code corresponding to the end of the instruction
-  // morseCode += "/.;.;.;-;.;-/";
+  morseCode += "/";
   return morseCode;
 }
