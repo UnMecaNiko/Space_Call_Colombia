@@ -40,7 +40,7 @@ void loop() {
     LDRfallingEdge(currentTime);
   }
 
-  if (EndMessage(receivedMessage, 7) == "/...-.-") {
+  if (EndMessage(receivedMessage, 2) == "//") {
     //Large pause corresponding to the end of the message
     receivedMessage += "/";
     Serial.println("");  // DEBUG
@@ -219,5 +219,6 @@ String decodeMorse(String lettremorse) {
     lettre = "Z";
   } else if (lettremorse == "") {
     lettre = " ";
-  }  // The Morse letter is empty if 2 slashes follow each other, i.e. if the word is changed.	return (lettre);
+  }  // The Morse letter is empty if 2 slashes follow each other, i.e. if the word is changed.	
+  return (lettre);
 }
