@@ -40,7 +40,7 @@ void loop() {
     LDRfallingEdge(currentTime);
   }
 
-  if (EndMessage(receivedMessage, 2) == "//") {
+  if (EndMessage(receivedMessage, 1) == "/") {
     //Large pause corresponding to the end of the message
     receivedMessage += "/";
     Serial.println("");  // DEBUG
